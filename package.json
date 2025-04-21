@@ -1,7 +1,7 @@
 {
-  "name": "binance-api-node",
-  "version": "0.13.0",
-  "description": "A node API wrapper for Binance",
+  "name": "rn-binance",
+  "version": "0.13.1",
+  "description": "A custom fork of binance-api-node with some changes for React Native",
   "main": "dist",
   "files": [
     "dist",
@@ -20,6 +20,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
     "https-proxy-agent": "^5.0.0",
     "isomorphic-fetch": "^3.0.0",
     "isomorphic-ws": "^4.0.1",
@@ -64,7 +65,17 @@
       "!test/utils.js"
     ]
   },
-  "author": "Balthazar Gronon <git@balthazar.dev>",
-  "homepage": "https://github.com/Ashlar/binance-api-node",
+  "author": "Serhii Startsev <sergii.startsev@gmail.com>",
+  "contributors": [
+    "Balthazar Gronon <git@balthazar.dev>"
+  ],
+  "homepage": "https://github.com/no-theo/rn-binance",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/no-theo/rn-binance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/no-theo/rn-binance/issues"
+  },
   "license": "MIT"
 }
