@@ -1,15 +1,20 @@
-# binance-api-node [![build](https://img.shields.io/github/actions/workflow/status/viewblock/binance-api-node/ci.yml?style=flat-square)](https://github.com/ViewBlock/binance-api-node/actions) [![bnb](https://img.shields.io/badge/binance-winner-yellow.svg?style=flat-square)](https://github.com/binance-exchange/binance-api-node)
+# rn-binance
 
-> A complete API wrapper for the [Binance](https://binance.com) API.
+A React Native–compatible fork of [`binance-api-node`](https://github.com/Ashlar/binance-api-node), a lightweight Node.js wrapper for the Binance API.
 
-Note: This wrapper uses Promises, if they are not supported in your environment, you might
-want to add [a polyfill](https://github.com/stefanpenner/es6-promise) for them.
+## ✨ Key Changes
 
-For PRs or issues, head over to the [source repository](https://github.com/Ashlar/binance-api-node).
+This fork introduces modifications to make the library compatible with React Native environments:
+
+- 🔒 Replaced native `crypto` module with [`crypto-js`](https://www.npmjs.com/package/crypto-js)
+- 🧼 Temporarily removed support for `https-proxy-agent`, which is not supported in React Native
+
+These changes ensure better compatibility with React Native apps, where Node.js core modules are not available.
+
 
 ### Installation
 
-    yarn add binance-api-node
+    npm i rn-binance
 
 ### Getting started
 
@@ -18,7 +23,7 @@ you don't plan on doing authenticated calls. You can create an api key
 [here](https://www.binance.com/userCenter/createApi.html).
 
 ```js
-import Binance from 'binance-api-node'
+import Binance from 'rn-binance'
 
 const client = Binance()
 
@@ -46,7 +51,7 @@ const client = Binance({
 If you do not have an appropriate babel config, you will need to use the basic commonjs requires.
 
 ```js
-const Binance = require('binance-api-node').default
+const Binance = require('rn-binance').default
 ```
 
 Every REST method returns a Promise, making this library [async await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) ready.
@@ -5544,7 +5549,7 @@ An utility error code map is also being exported by the package in order for you
 conditionals upon specific errors that could occur while using the API.
 
 ```js
-import Binance, { ErrorCodes } from 'binance-api-node'
+import Binance, { ErrorCodes } from 'rn-binance'
 
 console.log(ErrorCodes.INVALID_ORDER_TYPE) // -1116
 ```

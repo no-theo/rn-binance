@@ -1,7 +1,7 @@
 {
   "name": "rn-binance",
-  "version": "0.13.2",
-  "description": "A custom fork of binance-api-node with some changes for React Native",
+  "version": "0.13.3",
+  "description": "Fork of binance-api-node adapted for React Native: crypto replaced with crypto-js, https-proxy-agent temporarily removed",
   "main": "dist",
   "files": [
     "dist",
