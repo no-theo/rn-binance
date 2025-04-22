@@ -1,6 +1,5 @@
 import CryptoJS from 'crypto-js'
 import zip from 'lodash.zipobject'
-import HttpsProxyAgent from 'https-proxy-agent'
 import JSONbig from 'json-bigint'
 
 import 'isomorphic-fetch'
@@ -122,14 +121,13 @@ const checkParams = (name, payload, requires = []) => {
  * @returns {object} The api response
  */
 const publicCall =
-  ({ proxy, endpoints, testnet }) =>
+  ({ endpoints, testnet }) =>
   (path, data, method = 'GET', headers = {}) => {
     return sendResult(
       fetch(`${getEndpoint(endpoints, path, testnet)}${path}${makeQueryString(data)}`, {
         method,
         json: true,
         headers,
-        ...(proxy ? { agent: new HttpsProxyAgent(proxy) } : {}),
       }),
     )
   }
@@ -164,7 +162,7 @@ const keyCall =
  * @returns {object} The api response
  */
 const privateCall =
-  ({ apiKey, apiSecret, proxy, endpoints, getTime = defaultGetTime, pubCall, testnet }) =>
+  ({ apiKey, apiSecret, endpoints, getTime = defaultGetTime, pubCall, testnet }) =>
   (path, data = {}, method = 'GET', noData, noExtra) => {
     if (!apiKey || !apiSecret) {
       throw new Error('You need to pass an API key and secret to make authenticated calls.')
@@ -193,7 +191,6 @@ const privateCall =
             method,
             headers: { 'X-MBX-APIKEY': apiKey },
             json: true,
-            ...(proxy ? { agent: new HttpsProxyAgent(proxy) } : {}),
           },
         ),
       )
